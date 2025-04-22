@@ -68,7 +68,7 @@ callback = tf.keras.callbacks.EarlyStopping(
 # Define the sequential regression model
 insurance_model = tf.keras.Sequential([
     tf.keras.layers.Dense(100, activation="relu", input_shape=(features_train_normal.shape[1],), name="input"),
-    tf.keras.layers.Dense(50, activation="relu"),    
+    tf.keras.layers.Dense(10, activation="relu"),    
 	tf.keras.layers.Dense(1, name="output")  # Output a single regression value
 ])
 
@@ -92,6 +92,9 @@ history = insurance_model.fit(
     callbacks=[callback], 
     verbose=1
 )
+
+print("Model Summary:\n")
+insurance_model.summary()
 
 insurance_model.save("insurance_model.h5")
 # ------------------------------------------------------------------------------
